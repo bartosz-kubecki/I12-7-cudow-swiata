@@ -1,0 +1,280 @@
+body {
+	display: flex;
+	flex-direction: column;
+
+  overflow-x: hidden;
+  
+
+	margin: 0;
+
+	min-height: 100svh;
+
+	font-size: small;
+	font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+	background-color: #707A66;
+}
+
+header > img {
+	display: block;
+	margin: auto;
+
+	width: 100px;
+	height: 100px;
+
+	background-color: rgba(0, 0, 0, 0.5);
+
+  animation-name: logo;
+  animation-duration: 2s;
+}
+
+@keyframes logo {
+	20% {
+	  rotate: 0deg;
+	  border-radius: 50%;
+	}
+	  80% {
+		  rotate: 360deg;
+	  border-radius: 50%;
+	  }
+	100% {
+	  rotate: 360deg;
+	  border-radius: 0;
+	}
+  }
+
+header > nav a {
+	display: block;
+	float: left;
+
+	min-width: 100px;
+	padding: 0.5em;
+
+	text-align: center;
+	color: #9FE161;
+	text-decoration: none;
+}
+header > nav a:is(:hover) {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+}
+header > nav > div {
+	display: none;
+}
+
+body > div {
+	flex: 1;
+	display: flex;
+  
+  background-color: #CDE0BA;
+}
+
+body > div > nav {
+	width: 15rem;
+}
+menu {
+	list-style-type: none;
+	padding: 1em;
+	margin: 0;
+}
+menu li:hover {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+menu a:has(li:hover) {
+	color: white;
+	text-decoration: none;
+}
+
+section {
+  flex: 1;
+  box-sizing: border-box;
+
+	padding: 1em;
+	background-color: #9FE161;
+}
+
+section > article {
+	clear: both;
+}
+/*article h2 > a {
+	display: none;
+}
+article h2:hover > a {
+	display: inline-block;
+	position: relative;
+	left: 1em;
+
+	background-color: #28331D;
+	width: 1em;
+
+	text-decoration: none;
+	color: white;
+	text-align: center;
+}*/
+
+table {
+	border: 1px solid #28331D;
+	border-collapse: collapse;
+}
+td, th {
+	border: 1px solid #28331D;
+}
+th {
+	background-color: #28331D;
+	color: white;
+	font-weight: lighter;
+}
+
+input, select {
+	padding: 0.2em 1em;
+	margin-top: 1em;
+
+	background-color: #3F4737;
+	color: white;
+}
+
+#galeria > article {
+	float: left;
+	width: 25%;
+}
+#galeria img {
+	width: 90%;
+	margin-left: 5%;
+}
+h3 {
+	margin: 0 auto;
+	text-align: center;
+}
+#galeria p {
+	text-align: justify;
+	padding: 0 1em;
+}
+
+footer {
+	padding: 10px;
+
+	background-color: #28331D;
+
+	color: #9FE161;
+}
+
+footer > a {
+	position: relative;
+	float: right;
+
+	border: 1px solid black;
+	background-color: #28331D;
+	width: 1em;
+
+	text-decoration: none;
+	color: white;
+	text-align: center;
+}
+
+
+
+@media screen and (max-width: 1200px) and (min-width: 600px) {
+	section {
+		margin-right: 2rem;
+
+		transform: translate(2rem);
+		transition: transform 100ms;
+	}
+	section::before {
+		display: block;
+		position: absolute;
+		content: '';
+
+    pointer-events: none;
+
+		left: 0;
+		top: 0;
+
+		width: 100%;
+		height: 100%;
+
+		background-color: black;
+		opacity: 0;
+
+		transition: opacity 200ms;
+	}
+
+	body > div > nav {
+		position: absolute;
+    height: calc(100svh - 5rem - 110px);
+		z-index: 0;
+	}
+	body > div > nav > menu {
+		list-style-type: disc;
+	}
+	body > div > nav a {
+		pointer-events: none;
+	}
+
+	div:has(nav:hover, nav:active) > section {
+		transform: translate(15rem);
+	}
+	div:has(nav:hover, nav:active) > nav a {
+		pointer-events: unset;
+	}
+	div:has(nav:hover, nav:active) > section::before {
+		opacity: 0.8;
+	}
+
+    #galeria > article {
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	header > nav a:not(:first-of-type) {
+		display: none;
+		
+		float: right;
+	}
+
+	header > nav:has(:not(a:first-of-type):is(:hover, :focus, :active)) a {
+		display: block;
+	}
+	header > nav:has(:not(a:first-of-type):is(:hover, :focus, :active)) a:first-of-type {
+		display: none;
+	}
+
+	header > nav > div {
+		display: block;
+		float: right;
+
+		width: 1.5em;
+
+		background-color: #3F4737;
+
+		padding: 0.5em;
+		text-align: center;
+		color: white;
+	}
+
+	header > nav:has(:not(a:first-of-type):is(:hover, :focus, :active)) div {
+		width: 100%;
+
+		opacity: 0;
+	}
+
+	body > div {
+		flex-direction: column;
+	}
+
+	body > div > nav {
+		flex: 0;
+		width: 100vw;
+	}
+
+	article:has(table) {
+		overflow-x: scroll;
+	}
+
+	#galeria > article {
+		width: 100%;
+	}
+}
