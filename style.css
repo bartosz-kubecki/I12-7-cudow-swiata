@@ -24,6 +24,8 @@ header {
   height: 100px;
 
   background-color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  color: black;
 
   animation-name: logo;
   animation-duration: 2s;
